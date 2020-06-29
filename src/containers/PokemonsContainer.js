@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 
+import Pokemon from "../components/Pokemon";
+
 import { GET_POKEMONS } from "../graphql/get-pokemons";
 
 const PokemonsContainer = () => {
@@ -9,8 +11,11 @@ const PokemonsContainer = () => {
   });
 
   return (
-    <div className="pokemons">
-      {pokemons && pokemons.map((pokemon) => JSON.stringify(pokemon))}
+    <div className="container">
+      {pokemons &&
+        pokemons.map((pokemon) => (
+          <Pokemon key={pokemon.id} pokemon={pokemon} />
+        ))}
     </div>
   );
 };
